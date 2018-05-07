@@ -67,13 +67,10 @@ heilx.upnl.org/static/ {
 }
 
 # gitlab
-git.upnl.org {
-  import common
-
-  root /opt/gitlab/embedded/service/gitlab-rails/public
-  log /var/log/caddy/gitlab.log
-
-  proxy / unix:/var/opt/gitlab/gitlab-workhorse/socket {
+git.upnl.org {                                                           
+  import common                                                          
+  log /var/log/caddy/gitlab.log                                          
+  proxy / localhost:8880 {                                               
     header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
     transparent
   }
