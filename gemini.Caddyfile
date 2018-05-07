@@ -67,10 +67,10 @@ heilx.upnl.org/static/ {
 }
 
 # gitlab
-git.upnl.org {                                                           
-  import common                                                          
-  log /var/log/caddy/gitlab.log                                          
-  proxy / localhost:8880 {                                               
+git.upnl.org {
+  import common
+  log /var/log/caddy/gitlab.log
+  proxy / localhost:8880 {
     header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
     transparent
   }
