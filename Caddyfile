@@ -1,0 +1,90 @@
+(common) {
+  gzip
+
+  # Strict security headers
+  header / {
+    Strict-Transport-Security "max-age=15768000"
+    X-XSS-Protection "1; mode=block"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+  }
+}
+
+# Welcome page
+gemini.upnl.org {
+  import common
+
+  root /usr/share/nginx/greeting/gemini
+}
+
+# upnl
+upnl.org {
+  import common
+
+  limits {
+    body 250mb
+  }
+  log /home/jc/upnl-log/caddy.log
+
+  proxy / 127.0.0.1:54321 {
+    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    transparent
+  }
+}
+upnl.org/static/ {
+  import common
+
+  root /home/jc/upnl-homepage/homepage/static
+}
+join.upnl.org {
+  redir https://upnl.org/join
+}
+www.upnl.org {
+  redir https://upnl.org{uri}
+}
+kjc0210.upnl.org {
+  redir https://s.thejs.kr{uri}
+}
+
+# helix
+helix.upnl.org {
+  import common
+
+  limits {
+    body 250mb
+  }
+  log /var/log/caddy/helix.log
+
+  proxy / 127.0.0.1:54322 {
+    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    transparent
+  }
+}
+heilx.upnl.org/static/ {
+  import common
+
+  root /home/huu0909/fossil_community/fossil/static
+}
+
+# gitlab
+git.upnl.org {
+  import common
+
+  root /opt/gitlab/embedded/service/gitlab-rails/public
+  log /var/log/caddy/gitlab.log
+
+  proxy / unix:/var/opt/gitlab/gitlab-workhorse/socket {
+    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    transparent
+  }
+}
+
+pokemon.upnl.org {
+  import common
+  log /var/log/caddy/pokemon.log
+
+  proxy / localhost:54323 {
+    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    transparent
+  }
+}
