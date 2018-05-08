@@ -1,13 +1,13 @@
 (common) {
-  gzip
+    gzip
 
-  # Strict security headers
-  header / {
-    Strict-Transport-Security "max-age=15768000"
-    X-XSS-Protection "1; mode=block"
-    X-Content-Type-Options "nosniff"
-    X-Frame-Options "DENY"
-  }
+    # Strict security headers
+    header / {
+        Strict-Transport-Security "max-age=15768000"
+        X-XSS-Protection "1; mode=block"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+    }
 }
 
 # ==== deprecated ====
@@ -15,10 +15,17 @@
 
 # Welcome page
 uriel.upnl.org {
-  import common
+    import common
 
-  root /usr/share/nginx/greeting/uriel
+    root /usr/share/nginx/greeting/uriel
 }
 
-# TODO:
 # user page
+*.uriel.upnl.org {
+    import common
+
+    root /home
+    rewrite {
+        to /{label1}/public_html{uri}
+    }
+}
