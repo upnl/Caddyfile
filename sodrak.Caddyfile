@@ -1,0 +1,29 @@
+(common) {
+  gzip
+
+  # Strict security headers
+  header / {
+    Strict-Transport-Security "max-age=15768000"
+    X-XSS-Protection "1; mode=block"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+  }
+}
+
+# ==== deprecated ====
+# trac.sodrak.upnl.org
+# stats.sodrak.upnl.org
+# pdns.sodrak.upnl.org
+# menu.sodrak.upnl.org
+
+# Welcome page
+sodrak.upnl.org {
+    import common
+
+    root /var/www/greeting/sodrak
+}
+
+# TODO:
+# zal.sodrak.upnl.org
+# book.sodrak.upnl.org
+
