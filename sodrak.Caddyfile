@@ -23,6 +23,16 @@ sodrak.upnl.org {
     root /var/www/greeting/sodrak
 }
 
+# user page
+*.sodrak.upnl.org {
+    import common
+
+    root /home
+    rewrite {
+        to /{label1}/public_html{uri}
+    }
+}
+
 # TODO:
 # zal.sodrak.upnl.org
 # book.sodrak.upnl.org
