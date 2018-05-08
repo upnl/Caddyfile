@@ -10,6 +10,9 @@
   }
 }
 
+# ==== deprecated ====
+# pr.uriel.upnl.org (principia romatica)
+
 # Welcome page
 uriel.upnl.org {
   import common
@@ -19,4 +22,3 @@ uriel.upnl.org {
 
 # TODO:
 # user page
-# pr.uriel.upnl.org (principia romatica)
