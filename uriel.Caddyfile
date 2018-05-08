@@ -1,0 +1,22 @@
+(common) {
+  gzip
+
+  # Strict security headers
+  header / {
+    Strict-Transport-Security "max-age=15768000"
+    X-XSS-Protection "1; mode=block"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+  }
+}
+
+# Welcome page
+uriel.upnl.org {
+  import common
+
+  root /usr/share/nginx/greeting/uriel
+}
+
+# TODO:
+# user page
+# pr.uriel.upnl.org (principia romatica)
