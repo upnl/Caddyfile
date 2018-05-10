@@ -1,84 +1,84 @@
 (common) {
-  gzip
+    gzip
 
-  # Strict security headers
-  header / {
-    Strict-Transport-Security "max-age=15768000"
-    X-XSS-Protection "1; mode=block"
-    X-Content-Type-Options "nosniff"
-    X-Frame-Options "DENY"
-  }
+    # Strict security headers
+    header / {
+        Strict-Transport-Security "max-age=15768000"
+        X-XSS-Protection "1; mode=block"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+    }
 }
 
 # Welcome page
 gemini.upnl.org {
-  import common
-  root /usr/share/nginx/greeting/gemini
+    import common
+    root /usr/share/nginx/greeting/gemini
 }
 
 # UPnL Homepage
 upnl.org {
-  import common
-  limits 1gb
-  proxy / 127.0.0.1:54321 {
-    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
-    transparent
-  }
+    import common
+    limits 1gb
+    proxy / 127.0.0.1:54321 {
+        header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+        transparent
+    }
 
-  log /home/jc/upnl-log/caddy.log
+    log /home/jc/upnl-log/caddy.log
 }
 upnl.org/static/ {
-  import common
-  root /home/jc/upnl-homepage/homepage/static
+    import common
+    root /home/jc/upnl-homepage/homepage/static
 }
 www.upnl.org {
-  redir https://upnl.org{uri}
+    redir https://upnl.org{uri}
 }
 
 # UPnL Join page
 join.upnl.org {
-  redir https://upnl.org/join
+    redir https://upnl.org/join
 }
 
 # Helix Fossil
 helix.upnl.org {
-  import common
-  limits 1gb
-  proxy / 127.0.0.1:54322 {
-    transparent
-    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
-  }
+    import common
+    limits 1gb
+    proxy / 127.0.0.1:54322 {
+        transparent
+        header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    }
 
-  log /var/log/caddy/helix.log
+    log /var/log/caddy/helix.log
 }
 heilx.upnl.org/static/ {
-  import common
-  root /home/huu0909/fossil_community/fossil/static
+    import common
+    root /home/huu0909/fossil_community/fossil/static
 }
 
 # GitLab
 git.upnl.org {
-  import common
-  proxy / localhost:8880 {
-    transparent
-    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
-  }
+    import common
+    proxy / localhost:8880 {
+        transparent
+        header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    }
 
-  log /var/log/caddy/gitlab.log
+    log /var/log/caddy/gitlab.log
 }
 
 # Pokemon DB
 pokemon.upnl.org {
-  import common
-  proxy / localhost:54323 {
-    transparent
-    header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
-  }
+    import common
+    proxy / localhost:54323 {
+        transparent
+        header_upstream Forwarded "for={remote}; host={host}; proto={scheme}"
+    }
 
-  log /var/log/caddy/pokemon.log
+    log /var/log/caddy/pokemon.log
 }
 
 # JC's static file server (disable automatic HTTPS redirection)
 http://kjc0210.upnl.org https://kjc0210.upnl.org {
-  redir {scheme}://s.thejc.kr{uri}
+    redir {scheme}://s.thejc.kr{uri}
 }
