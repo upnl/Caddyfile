@@ -29,3 +29,5 @@ uriel.upnl.org {
         to /{label1}/public_html{uri}
     }
 }
+
+# vim: ft=Caddyfile

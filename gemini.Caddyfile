@@ -82,3 +82,5 @@ pokemon.upnl.org {
 http://kjc0210.upnl.org https://kjc0210.upnl.org {
     redir {scheme}://s.thejc.kr{uri}
 }
+
+# vim: ft=Caddyfile
