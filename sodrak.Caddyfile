@@ -1,13 +1,13 @@
 (common) {
-  gzip
+    gzip
 
-  # Strict security headers
-  header / {
-    Strict-Transport-Security "max-age=15768000"
-    X-XSS-Protection "1; mode=block"
-    X-Content-Type-Options "nosniff"
-    X-Frame-Options "DENY"
-  }
+    # Strict security headers
+    header / {
+        Strict-Transport-Security "max-age=15768000"
+        X-XSS-Protection "1; mode=block"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+    }
 }
 
 # ==== deprecated ====
