@@ -10,12 +10,6 @@
     }
 }
 
-# ==== deprecated ====
-# trac.sodrak.upnl.org
-# stats.sodrak.upnl.org
-# pdns.sodrak.upnl.org
-# menu.sodrak.upnl.org
-
 # Welcome page
 sodrak.upnl.org {
     import common
@@ -34,8 +28,11 @@ sodrak.upnl.org {
 }
 
 # TODO:
-# zal.sodrak.upnl.org
-# book.sodrak.upnl.org
-
+# - [ ] trac.sodrak.upnl.org (obsoleted)
+# - [ ] stats.sodrak.upnl.org (obsoleted)
+# - [ ] pdns.sodrak.upnl.org (obsoleted)
+# - [ ] menu.sodrak.upnl.org (obsoleted)
+# - [ ] zal.sodrak.upnl.org
+# - [ ] book.sodrak.upnl.org
 
 # vim: ft=Caddyfile
