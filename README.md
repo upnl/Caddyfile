@@ -13,4 +13,4 @@ setcap cap_net_bind_service=+ep /usr/local/bin/caddy
 ```
 
 ###### Reference
-- https://github.com/mholt/caddy/tree/master/dist/init/linux-upstart
+- https://github.com/caddyserver/caddy/tree/891446d0/dist/init
